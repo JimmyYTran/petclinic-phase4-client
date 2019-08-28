@@ -1,8 +1,6 @@
 package com.example.petclinic.client;
 
-import com.example.petclinic.client.model.Owner;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.example.petclinic.client.workflow.ClientWorkflow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -11,9 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.LinkedHashMap;
-import java.util.List;
 
 @SpringBootApplication
 public class PetClinicClient {
@@ -30,18 +25,17 @@ public class PetClinicClient {
     }
 
     @Bean
-    public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
+    public CommandLineRunner run(ClientWorkflow workflow) throws Exception {
         return args -> {
 
-            List<LinkedHashMap<String, String>> objects = restTemplate.getForObject("http://localhost:8080/owner/getAllOwners", List.class);
-
-            // Need to map our list of HashMaps to a list of Owners
-            ObjectMapper mapper = new ObjectMapper();
-            List<Owner> owners = mapper.convertValue(objects, new TypeReference<List<Owner>>() {
-            });
-
-            owners.forEach(owner -> log.info(owner.toString()));
-
+//            workflow.testOwnerGetAllOwners();
+//            workflow.testPetGetAllPets();
+//            workflow.testVisitGetAllVisits();
+//            workflow.testVetGetAllVets();
+//            workflow.testOwnerAddOwner();
+//            workflow.testPetAddPet();
+//            workflow.testPetGetPet(7L);
+            workflow.testPetDeletePet(7L);
         };
     }
 }
