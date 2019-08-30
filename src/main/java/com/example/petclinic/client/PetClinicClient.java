@@ -35,7 +35,6 @@ public class PetClinicClient {
 //            workflow.testOwnerAddOwner();
 //            workflow.testPetAddPet();
 //            workflow.testPetGetPet(7L);
-            workflow.testPetDeletePet(7L);
         };
     }
 }

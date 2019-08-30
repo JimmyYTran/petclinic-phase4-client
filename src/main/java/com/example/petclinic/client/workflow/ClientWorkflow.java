@@ -76,15 +76,6 @@ public class ClientWorkflow {
         log.info(pet.toString());
     }
 
-    public void testPetDeletePet(Long id) {
-
-        StringBuilder builder = new StringBuilder();
-        builder.append("http://localhost:8080/pet/deletePet/").append(id);
-
-        String url = builder.toString();
-        restTemplate.delete(url);
-    }
-
     public void testVisitGetAllVisits() {
         List<LinkedHashMap<String, String>> objects = restTemplate.getForObject("http://localhost:8080/visit/getAllVisits", List.class);
 
